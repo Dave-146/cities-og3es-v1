@@ -117,6 +117,7 @@ $(function () {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         predictions.forEach(function (prediction) {
+            console.log(prediction);
             const x = prediction.bbox.x;
             const y = prediction.bbox.y;
 
