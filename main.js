@@ -111,13 +111,23 @@ $(function () {
 
     const renderPredictions = function (predictions) {
         var dimensions = videoDimensions(video);
-
+    
         var scale = 1;
-
+    
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
+    
+        let switchState = Number(document.getElementById('predictionSwitch').checked);
+            
         predictions.forEach(function (prediction) {
             console.log(prediction);
+        
+            if (prediction.class === 'correct_sample') {
+                document.getElementById('predictionSwitch').checked = true; // Turn switch on
+                console.log('Switch is ON');
+            } else if (prediction.class === 'incorrect_puzzle') {
+                document.getElementById('predictionSwitch').checked = false; // Turn switch off
+                console.log('Switch is OFF');
+            }
             const x = prediction.bbox.x;
             const y = prediction.bbox.y;
 
